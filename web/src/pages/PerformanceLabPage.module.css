@@ -1,0 +1,378 @@
+.hero {
+  background: linear-gradient(120deg, #050b14, var(--navy-mid));
+  color: var(--white);
+  padding: 4rem 1.25rem 3.5rem;
+}
+
+.heroInner {
+  max-width: var(--max);
+  margin: 0 auto;
+}
+
+.kicker {
+  font-family: var(--font-display);
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: #ff7a8a;
+  font-size: 1rem;
+  margin-bottom: 0.75rem;
+}
+
+.title {
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  max-width: 20ch;
+  margin-bottom: 1rem;
+}
+
+.lead {
+  font-size: 1.1rem;
+  color: var(--muted);
+  max-width: 60ch;
+  margin-bottom: 1.5rem;
+}
+
+.badges {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+}
+
+.badges li {
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 0.45rem 0.85rem;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  color: var(--cream);
+}
+
+.section,
+.sectionAlt,
+.sectionDark {
+  padding: 4rem 1.25rem;
+}
+
+.section {
+  background: var(--cream);
+}
+
+.sectionAlt {
+  background: var(--white);
+}
+
+.sectionDark {
+  background: #050b14;
+  color: var(--white);
+}
+
+.wrap {
+  max-width: var(--max);
+  margin: 0 auto;
+}
+
+.wrap h2 {
+  font-size: clamp(2rem, 3vw, 2.75rem);
+  color: var(--navy);
+  margin-bottom: 0.75rem;
+}
+
+.sectionDark .wrap h2 {
+  color: var(--white);
+}
+
+.muted {
+  color: var(--muted-dark);
+  margin-bottom: 1.5rem;
+}
+
+.lightMuted {
+  color: rgba(255, 255, 255, 0.7);
+  margin-bottom: 1.5rem;
+  max-width: 70ch;
+}
+
+.grid2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2.5rem;
+  align-items: start;
+}
+
+@media (max-width: 900px) {
+  .grid2 {
+    grid-template-columns: 1fr;
+  }
+}
+
+.benefits {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 2rem;
+}
+
+.benefits li {
+  position: relative;
+  padding-left: 1.25rem;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+  color: var(--navy);
+}
+
+.benefits li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.55em;
+  width: 8px;
+  height: 8px;
+  border-radius: 2px;
+  background: var(--red);
+}
+
+.commit {
+  padding: 1.5rem;
+  border-radius: var(--radius);
+  border: 1px solid rgba(10, 22, 40, 0.1);
+  background: var(--white);
+}
+
+.commit h3 {
+  font-size: 1.5rem;
+  color: var(--navy);
+  margin-bottom: 0.5rem;
+}
+
+.commit p {
+  color: var(--muted-dark);
+}
+
+.flyer {
+  border-radius: var(--radius);
+  overflow: hidden;
+  border: 1px solid rgba(10, 22, 40, 0.1);
+  box-shadow: 0 24px 60px rgba(10, 22, 40, 0.12);
+}
+
+.flyer img {
+  width: 100%;
+  display: block;
+}
+
+.flyerCaption {
+  font-size: 0.85rem;
+  color: var(--muted-dark);
+  padding: 0.75rem 1rem;
+  background: var(--cream);
+}
+
+.scheduleGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+@media (max-width: 700px) {
+  .scheduleGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.scheduleCard {
+  border-radius: var(--radius);
+  border: 1px solid rgba(10, 22, 40, 0.1);
+  padding: 1.5rem;
+  background: var(--cream);
+}
+
+.scheduleCard h3 {
+  font-size: 1.35rem;
+  margin-bottom: 1rem;
+  color: var(--navy);
+}
+
+.scheduleCard ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.scheduleCard li {
+  display: grid;
+  grid-template-columns: 100px 1fr auto;
+  gap: 0.75rem;
+  align-items: center;
+  padding: 0.65rem 0;
+  border-bottom: 1px solid rgba(10, 22, 40, 0.08);
+  font-weight: 600;
+}
+
+.scheduleCard li:last-child {
+  border-bottom: none;
+}
+
+.scheduleCard li span:first-child {
+  font-variant-numeric: tabular-nums;
+  color: var(--red);
+}
+
+.slotFull {
+  opacity: 0.55;
+  text-decoration: line-through;
+}
+
+.slotFull em {
+  font-style: normal;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--red);
+  text-decoration: none;
+}
+
+.callout {
+  margin-top: 1.5rem;
+  font-weight: 600;
+  color: var(--navy);
+}
+
+.callout a {
+  color: var(--red);
+}
+
+.pricingGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+}
+
+@media (max-width: 700px) {
+  .pricingGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.priceCard {
+  border-radius: var(--radius);
+  padding: 2rem;
+  background: var(--white);
+  border: 1px solid rgba(10, 22, 40, 0.1);
+}
+
+.priceCardFeatured {
+  border-color: var(--red);
+  box-shadow: 0 20px 50px rgba(227, 24, 55, 0.15);
+}
+
+.priceLabel {
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  color: var(--red);
+  margin-bottom: 0.35rem;
+}
+
+.price {
+  font-family: var(--font-display);
+  font-size: 3.5rem;
+  color: var(--navy);
+  line-height: 1;
+}
+
+.per {
+  color: var(--muted-dark);
+  margin-bottom: 1.25rem;
+}
+
+.priceCard ul {
+  padding-left: 1.1rem;
+  margin: 0;
+  color: var(--muted-dark);
+}
+
+.priceCard li {
+  margin-bottom: 0.35rem;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  max-width: 720px;
+  margin-top: 1.5rem;
+}
+
+.form label,
+.form fieldset {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.92);
+}
+
+.form input,
+.form select,
+.form textarea {
+  font: inherit;
+  padding: 0.75rem 0.85rem;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border);
+  background: rgba(255, 255, 255, 0.06);
+  color: var(--white);
+}
+
+.form input:focus,
+.form select:focus,
+.form textarea:focus {
+  outline: 2px solid var(--red);
+  outline-offset: 2px;
+}
+
+.formRow {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+@media (max-width: 640px) {
+  .formRow {
+    grid-template-columns: 1fr;
+  }
+}
+
+.fieldset {
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 1rem;
+}
+
+.fieldset legend {
+  padding: 0 0.35rem;
+  font-size: 0.85rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.radio {
+  flex-direction: row !important;
+  align-items: center;
+  gap: 0.5rem !important;
+  font-weight: 500 !important;
+  margin-bottom: 0.35rem;
+}
+
+.success {
+  padding: 1rem 1.25rem;
+  border-radius: var(--radius-sm);
+  background: rgba(46, 204, 113, 0.15);
+  border: 1px solid rgba(46, 204, 113, 0.45);
+  color: #b8f5c8;
+  margin-bottom: 1rem;
+}

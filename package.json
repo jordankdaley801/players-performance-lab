@@ -4,11 +4,19 @@
   "version": "1.0.0",
   "main": "package.json",
   "license": "UNLICENSED",
+  "engines": {
+    "node": ">=20"
+  },
+  "workspaces": [
+    "web"
+  ],
   "scripts": {
     "build": "sanity build",
+    "build:web": "npm run build -w web",
     "deploy": "sanity deploy",
     "deploy-graphql": "sanity graphql deploy",
     "dev": "sanity dev",
+    "dev:web": "npm run dev -w web",
     "start": "sanity start"
   },
   "keywords": [

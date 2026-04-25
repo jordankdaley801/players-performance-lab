@@ -1,0 +1,272 @@
+.hero {
+  position: relative;
+  color: var(--white);
+  padding: 4.5rem 1.25rem 5rem;
+  overflow: hidden;
+}
+
+.heroBg {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 80% 60% at 50% 0%, rgba(227, 24, 55, 0.35), transparent 55%),
+    linear-gradient(160deg, #050b14 0%, var(--navy) 45%, #0d1f3d 100%);
+  z-index: 0;
+}
+
+.heroInner {
+  position: relative;
+  z-index: 1;
+  max-width: var(--max);
+  margin: 0 auto;
+}
+
+.kicker {
+  font-family: var(--font-display);
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  font-size: 1.1rem;
+  color: var(--muted);
+  margin-bottom: 0.75rem;
+}
+
+.heroTitle {
+  font-size: clamp(3rem, 7vw, 5.5rem);
+  max-width: 14ch;
+  margin-bottom: 1.25rem;
+}
+
+.heroAccent {
+  color: #ffb3bc;
+}
+
+.heroLead {
+  font-size: 1.15rem;
+  max-width: 52ch;
+  color: var(--muted);
+  margin-bottom: 2rem;
+}
+
+.heroCtas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 3rem;
+}
+
+.heroCtas a {
+  text-decoration: none;
+  text-align: center;
+}
+
+.heroCard {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+  gap: 0;
+  border-radius: var(--radius);
+  overflow: hidden;
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow);
+  background: rgba(255, 255, 255, 0.04);
+}
+
+@media (max-width: 800px) {
+  .heroCard {
+    grid-template-columns: 1fr;
+  }
+}
+
+.heroImg {
+  width: 100%;
+  height: 100%;
+  min-height: 240px;
+  object-fit: cover;
+}
+
+.heroCardBody {
+  padding: 1.75rem 1.75rem 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.heroCardKicker {
+  font-size: 0.75rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.heroCardTitle {
+  font-family: var(--font-display);
+  font-size: 2rem;
+  letter-spacing: 0.03em;
+}
+
+.heroCardText {
+  color: var(--muted);
+  flex: 1;
+}
+
+.textLink {
+  font-weight: 700;
+  color: #ffb3bc;
+  margin-top: 0.5rem;
+}
+
+.textLink:hover {
+  text-decoration: underline;
+}
+
+.sectionLight,
+.sectionDark {
+  padding: 4.5rem 1.25rem;
+}
+
+.sectionLight {
+  background: var(--cream);
+}
+
+.sectionDark {
+  background: #050b14;
+  color: var(--muted);
+}
+
+.wrap {
+  max-width: var(--max);
+  margin: 0 auto;
+}
+
+.sectionKicker {
+  font-family: var(--font-display);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--red);
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.sectionKickerLight {
+  font-family: var(--font-display);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #ff7a8a;
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.sectionTitle {
+  font-size: clamp(2.25rem, 4vw, 3.25rem);
+  color: var(--navy);
+  max-width: 18ch;
+  margin-bottom: 1rem;
+}
+
+.sectionTitleLight {
+  font-size: clamp(2.25rem, 4vw, 3.25rem);
+  color: var(--white);
+  max-width: 22ch;
+  margin-bottom: 1rem;
+}
+
+.sectionLead {
+  font-size: 1.1rem;
+  color: var(--muted-dark);
+  max-width: 60ch;
+  margin-bottom: 2.5rem;
+}
+
+.pillars {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+
+@media (max-width: 900px) {
+  .pillars {
+    grid-template-columns: 1fr;
+  }
+}
+
+.pillar {
+  background: var(--white);
+  border-radius: var(--radius);
+  padding: 1.75rem;
+  border: 1px solid rgba(10, 22, 40, 0.08);
+  box-shadow: 0 16px 50px rgba(10, 22, 40, 0.06);
+}
+
+.pillar h3 {
+  font-size: 1.65rem;
+  color: var(--navy);
+  margin-bottom: 0.65rem;
+}
+
+.pillar p {
+  color: var(--muted-dark);
+  margin-bottom: 1rem;
+}
+
+.pillarLink {
+  font-weight: 700;
+  color: var(--red);
+}
+
+.pillarLink:hover {
+  text-decoration: underline;
+}
+
+.timeline {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  margin: 2.5rem 0 3.5rem;
+}
+
+@media (max-width: 900px) {
+  .timeline {
+    grid-template-columns: 1fr;
+  }
+}
+
+.timelineItem {
+  padding: 1.5rem;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.timelineYear {
+  display: inline-block;
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  letter-spacing: 0.08em;
+  color: #ff7a8a;
+  margin-bottom: 0.35rem;
+}
+
+.timelineItem h3 {
+  font-size: 1.5rem;
+  color: var(--white);
+  margin-bottom: 0.5rem;
+}
+
+.shopTeaser {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 1.5rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--border);
+}
+
+.shopTeaser a {
+  text-decoration: none;
+  display: inline-flex;
+}
+
+.mutedLight {
+  color: rgba(255, 255, 255, 0.65);
+  max-width: 52ch;
+}
