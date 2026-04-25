@@ -1,4 +1,6 @@
 :root {
+  /* Used by home hero to sit flush under sticky header while video fills the viewport */
+  --layout-header-h: 5.25rem;
   --navy: #0a1628;
   --navy-mid: #111f36;
   --navy-soft: #1a2d4a;
@@ -25,6 +27,12 @@
 
 html {
   scroll-behavior: smooth;
+}
+
+@media (max-width: 900px) {
+  :root {
+    --layout-header-h: 8.75rem;
+  }
 }
 
 body {
@@ -70,6 +78,10 @@ p {
 
 p:last-child {
   margin-bottom: 0;
+}
+
+[data-home-hero] p {
+  margin: 0;
 }
 
 .sr-only {

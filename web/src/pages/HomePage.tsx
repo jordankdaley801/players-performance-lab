@@ -48,7 +48,7 @@ const timeline = [
 export function HomePage() {
   return (
     <>
-      <section className={styles.hero}>
+      <section className={styles.hero} data-home-hero>
         <div className={styles.heroMedia} aria-hidden>
           <video
             className={styles.heroVideo}
@@ -64,26 +64,33 @@ export function HomePage() {
           <div className={styles.heroOverlay} />
         </div>
         <div className={styles.heroInner}>
-          <p className={styles.kicker}>Greatness is trained</p>
-          <h1 className={styles.heroTitle}>
-            Performance you can measure.
-            <br />
-            <span className={styles.heroAccent}>Development you can trust.</span>
-          </h1>
-          <p className={styles.heroLead}>
-            Train like a pro at The Fieldhouse — team practices, member cage rentals, and the Player Performance Lab
-            powered by KinetiQ.
-          </p>
-          <div className={styles.heroCtas}>
-            <Link to="/performance-lab" className={`${btnStyles.btn} ${btnStyles.primary}`}>
-              Start with Performance Lab
-            </Link>
-            <Link to="/members" className={`${btnStyles.btn} ${btnStyles.ghost}`}>
-              Member login & cages
-            </Link>
+          <div className={styles.heroCopy}>
+            <p className={styles.kicker}>Greatness is trained</p>
+            <h1 className={styles.heroTitle}>
+              Performance you can measure.
+              <br />
+              <span className={styles.heroAccent}>Development you can trust.</span>
+            </h1>
+            <p className={styles.heroLead}>
+              Train like a pro at The Fieldhouse — team practices, member cage rentals, and the Player Performance Lab
+              powered by KinetiQ.
+            </p>
+            <div className={styles.heroCtas}>
+              <Link to="/performance-lab" className={`${btnStyles.btn} ${btnStyles.primary}`}>
+                Start with Performance Lab
+              </Link>
+              <Link to="/members" className={`${btnStyles.btn} ${btnStyles.ghost}`}>
+                Member login & cages
+              </Link>
+            </div>
           </div>
           <div className={styles.heroCard}>
-            <img src={heroImg} alt="Players Performance Lab with KinetiQ" className={styles.heroImg} />
+            <div
+              className={styles.heroCardImage}
+              style={{backgroundImage: `url(${heroImg})`}}
+              role="img"
+              aria-label="Players Performance Lab with KinetiQ"
+            />
             <div className={styles.heroCardBody}>
               <p className={styles.heroCardKicker}>Featured partnership</p>
               <p className={styles.heroCardTitle}>Player Performance Lab with KinetiQ</p>
