@@ -20,7 +20,7 @@ export function Layout({children}: {children: ReactNode}) {
       <header className={styles.header}>
         <div className={styles.headerInner}>
           <Link to="/" className={styles.brand}>
-            <span className={styles.brandMark} aria-hidden />
+            <img src="/logo.png" alt="" className={styles.brandMark} width={44} height={44} decoding="async" />
             <span className={styles.brandText}>
               <span className={styles.brandTitle}>Players Performance Lab</span>
               <span className={styles.brandSub}>The Fieldhouse · Spanish Fork, UT</span>
