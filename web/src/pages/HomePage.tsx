@@ -3,6 +3,9 @@ import heroImg from '../../../PPL+KinetiQ.jpg'
 import btnStyles from '@/components/Button.module.css'
 import styles from './HomePage.module.css'
 
+/** Served from web/public/hero.mp4 */
+const HERO_VIDEO_SRC = '/hero.mp4'
+
 const pillars = [
   {
     title: 'Team memberships',
@@ -46,13 +49,26 @@ export function HomePage() {
   return (
     <>
       <section className={styles.hero}>
-        <div className={styles.heroBg} aria-hidden />
+        <div className={styles.heroMedia} aria-hidden>
+          <video
+            className={styles.heroVideo}
+            autoPlay
+            muted
+            loop
+            playsInline
+            poster={heroImg}
+            preload="metadata"
+          >
+            <source src={HERO_VIDEO_SRC} type="video/mp4" />
+          </video>
+          <div className={styles.heroOverlay} />
+        </div>
         <div className={styles.heroInner}>
           <p className={styles.kicker}>Greatness is trained</p>
           <h1 className={styles.heroTitle}>
-            Full-circle baseball
+            Performance you can measure.
             <br />
-            <span className={styles.heroAccent}>development under one roof</span>
+            <span className={styles.heroAccent}>Development you can trust.</span>
           </h1>
           <p className={styles.heroLead}>
             Train like a pro at The Fieldhouse — team practices, member cage rentals, and the Player Performance Lab
