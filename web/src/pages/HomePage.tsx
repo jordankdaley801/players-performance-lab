@@ -6,6 +6,9 @@ import styles from './HomePage.module.css'
 /** Served from web/public/hero.mp4 */
 const HERO_VIDEO_SRC = '/hero.mp4'
 const PERFORMANCE_LAB_SIGNUP_URL = 'https://playersfieldhouse.ezfacility.com/package'
+const PLAYERS_LEAGUE_REGISTER_URL = '#'
+const playersLeagueDivisions = ['7U', '8U', '9U', '10U', '11U', '12U', '13U', '14U']
+const playersLeagueLocations = ['Spanish Fork', 'Salem', 'Payson', 'Orem', 'Vineyard', 'Lehi', 'Draper']
 
 const pillars = [
   {
@@ -107,6 +110,48 @@ export function HomePage() {
                 See schedule & pricing →
               </Link>
             </div>
+          </div>
+        </div>
+      </section>
+
+      <section className={styles.playersLeague} id="players-league">
+        <div className={styles.wrap}>
+          <div className={styles.playersLeagueHeader}>
+            <p className={styles.sectionKickerLight}>New this season</p>
+            <h2 className={styles.playersLeagueTitle}>The Players League</h2>
+            <p className={styles.playersLeagueLead}>
+              The most competitive youth baseball league in Utah is here — and spots are filling fast. The Players
+              League runs a full high school-format season complete with standings, rivalries, and a playoff bracket
+              that crowns one champion per division. This isn't rec ball. This is where the best gold-level programs
+              in the valley come to prove it. If your team has what it takes, claim your spot before someone else
+              does.
+            </p>
+            <p className={styles.playersLeagueUrgency}>Limited spots per division - registration windows close fast.</p>
+          </div>
+
+          <div className={styles.divisionsGrid}>
+            {playersLeagueDivisions.map((division) => (
+              <article key={division} className={styles.divisionCard}>
+                <h3>{division}</h3>
+                <a
+                  href={PLAYERS_LEAGUE_REGISTER_URL}
+                  className={`${btnStyles.btn} ${btnStyles.primary}`}
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  Register Now
+                </a>
+              </article>
+            ))}
+          </div>
+
+          <div className={styles.locationsBlock}>
+            <p className={styles.sectionKickerLight}>Playing locations</p>
+            <ul className={styles.locationsList}>
+              {playersLeagueLocations.map((city) => (
+                <li key={city}>{city}</li>
+              ))}
+            </ul>
           </div>
         </div>
       </section>

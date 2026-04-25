@@ -4,10 +4,17 @@ import {useCart} from '@/context/CartContext'
 import {useMember} from '@/context/MemberContext'
 import styles from './Layout.module.css'
 
-const nav = [
+type NavItem = {
+  to: string
+  label: string
+  hashLink?: boolean
+}
+
+const nav: NavItem[] = [
   {to: '/', label: 'Home'},
   {to: '/performance-lab', label: 'Performance Lab'},
   {to: '/fieldhouse', label: 'The Fieldhouse'},
+  {to: '/#players-league', label: 'The Players League', hashLink: true},
   {to: '/members', label: 'Members'},
   {to: '/shop', label: 'Shop'},
 ]
@@ -32,18 +39,24 @@ export function Layout({children}: {children: ReactNode}) {
             </span>
           </Link>
           <nav className={styles.nav} aria-label="Primary">
-            {nav.map(({to, label}) => (
-              <NavLink
-                key={to}
-                to={to}
-                className={({isActive}) =>
-                  `${styles.navLink} ${isActive ? styles.navLinkActive : ''}`.trim()
-                }
-                end={to === '/'}
-              >
-                {label}
-              </NavLink>
-            ))}
+            {nav.map(({to, label, hashLink}) =>
+              hashLink ? (
+                <a key={to} href={to} className={styles.navLink}>
+                  {label}
+                </a>
+              ) : (
+                <NavLink
+                  key={to}
+                  to={to}
+                  className={({isActive}) =>
+                    `${styles.navLink} ${isActive ? styles.navLinkActive : ''}`.trim()
+                  }
+                  end={to === '/'}
+                >
+                  {label}
+                </NavLink>
+              ),
+            )}
           </nav>
           <div className={styles.headerActions}>
             {member ? (
