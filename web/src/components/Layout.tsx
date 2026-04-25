@@ -12,6 +12,11 @@ const nav = [
   {to: '/shop', label: 'Shop'},
 ]
 
+const socialLinks = {
+  facebook: 'https://www.instagram.com/players.performance.lab/',
+  instagram: 'https://www.instagram.com/playersfieldhouse/',
+}
+
 export function Layout({children}: {children: ReactNode}) {
   const {count} = useCart()
   const {member} = useMember()
@@ -22,7 +27,7 @@ export function Layout({children}: {children: ReactNode}) {
           <Link to="/" className={styles.brand}>
             <img src="/logo.png" alt="" className={styles.brandMark} width={44} height={44} decoding="async" />
             <span className={styles.brandText}>
-              <span className={styles.brandTitle}>Players Performance Lab</span>
+              <span className={styles.brandTitle}>Players Fieldhouse</span>
               <span className={styles.brandSub}>The Fieldhouse · Spanish Fork, UT</span>
             </span>
           </Link>
@@ -46,6 +51,30 @@ export function Layout({children}: {children: ReactNode}) {
                 Hi, {member.name.split(' ')[0]}
               </span>
             ) : null}
+            <div className={styles.socialLinks} aria-label="Social media">
+              <a
+                href={socialLinks.facebook}
+                target="_blank"
+                rel="noreferrer"
+                className={styles.socialLink}
+                aria-label="Facebook"
+              >
+                <svg viewBox="0 0 24 24" aria-hidden className={styles.socialIcon}>
+                  <path d="M13.5 22v-8.2h2.8l.4-3.2h-3.2V8.6c0-.9.3-1.6 1.6-1.6h1.7V4.2c-.3 0-1.3-.2-2.5-.2-2.5 0-4.1 1.5-4.1 4.3v2.4H8v3.2h2.7V22h2.8z" />
+                </svg>
+              </a>
+              <a
+                href={socialLinks.instagram}
+                target="_blank"
+                rel="noreferrer"
+                className={styles.socialLink}
+                aria-label="Instagram"
+              >
+                <svg viewBox="0 0 24 24" aria-hidden className={styles.socialIcon}>
+                  <path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5zm0 2.3A2.7 2.7 0 0 0 4.3 7v10A2.7 2.7 0 0 0 7 19.7h10a2.7 2.7 0 0 0 2.7-2.7V7A2.7 2.7 0 0 0 17 4.3H7zm10.8 1.8a1.1 1.1 0 1 1 0 2.2 1.1 1.1 0 0 1 0-2.2zM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10zm0 2.3a2.7 2.7 0 1 0 0 5.4 2.7 2.7 0 0 0 0-5.4z" />
+                </svg>
+              </a>
+            </div>
             <Link to="/cart" className={styles.cartLink}>
               Cart
               {count > 0 ? <span className={styles.cartBadge}>{count}</span> : null}

@@ -5,6 +5,7 @@ import {pplBenefits, pplScheduleBlocks} from '@/data/pplSchedule'
 import styles from './PerformanceLabPage.module.css'
 
 type Plan = '150' | '200'
+const PERFORMANCE_LAB_SIGNUP_URL = 'https://playersfieldhouse.ezfacility.com/package'
 
 const initialForm = {
   parentName: '',
@@ -148,6 +149,13 @@ export function PerformanceLabPage() {
           <p className={styles.lightMuted}>
             Tell us about your athlete. We will follow up to confirm placement, waivers, and billing. This demo saves
             submissions locally in your browser — wire it to your CRM or email when you are ready.
+          </p>
+          <p className={styles.externalSignup}>
+            Ready to enroll now?{' '}
+            <a href={PERFORMANCE_LAB_SIGNUP_URL} target="_blank" rel="noreferrer">
+              Sign up in EZFacility
+            </a>
+            .
           </p>
           {submitted ? (
             <p className={styles.success} role="status">

@@ -5,6 +5,7 @@ import styles from './HomePage.module.css'
 
 /** Served from web/public/hero.mp4 */
 const HERO_VIDEO_SRC = '/hero.mp4'
+const PERFORMANCE_LAB_SIGNUP_URL = 'https://playersfieldhouse.ezfacility.com/package'
 
 const pillars = [
   {
@@ -76,9 +77,14 @@ export function HomePage() {
               powered by KinetiQ.
             </p>
             <div className={styles.heroCtas}>
-              <Link to="/performance-lab" className={`${btnStyles.btn} ${btnStyles.primary}`}>
+              <a
+                href={PERFORMANCE_LAB_SIGNUP_URL}
+                target="_blank"
+                rel="noreferrer"
+                className={`${btnStyles.btn} ${btnStyles.primary}`}
+              >
                 Start with Performance Lab
-              </Link>
+              </a>
               <Link to="/members" className={`${btnStyles.btn} ${btnStyles.ghost}`}>
                 Member login & cages
               </Link>
