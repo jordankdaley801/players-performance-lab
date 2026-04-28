@@ -9,9 +9,9 @@ const PERFORMANCE_LAB_SIGNUP_URL = 'https://playersfieldhouse.ezfacility.com/pac
 const VAGARO_BOOK_URL = 'https://www.vagaro.com'
 
 const bookSessionPackages = [
-  {sessionsPerWeek: '1 Session/week', name: 'Flex Starter'},
   {sessionsPerWeek: '2 Sessions/week', name: 'Flex Builder'},
   {sessionsPerWeek: '3 Sessions/week', name: 'Flex Elite'},
+  {sessionsPerWeek: '4 Sessions/week', name: 'Flex Pro'},
   {sessionsPerWeek: '5 Sessions/week', name: 'Flex Max'},
 ] as const
 
@@ -156,7 +156,7 @@ export function HomePage() {
           <p className={styles.bookSessionsSubhead}>No locked-in schedules. Pick the days that work for you, week by week.</p>
           <p className={styles.bookSessionsLead}>
             Choose a session package and book your weekly training slots directly. Each session is capped at 12 athletes
-            — when a slot fills up, it&apos;s gone. Packages range from 1 to 5 sessions per week. Parents log in weekly
+            — when a slot fills up, it&apos;s gone. Packages range from 2 to 5 sessions per week. Parents log in weekly
             to select their days and times.
           </p>
           <div className={styles.packageGrid}>
