@@ -6,9 +6,16 @@ import styles from './HomePage.module.css'
 /** Served from web/public/hero.mp4 */
 const HERO_VIDEO_SRC = '/hero.mp4'
 const PERFORMANCE_LAB_SIGNUP_URL = 'https://playersfieldhouse.ezfacility.com/package'
-const PLAYERS_LEAGUE_REGISTER_URL = '#'
-const playersLeagueDivisions = ['7U', '8U', '9U', '10U', '11U', '12U', '13U', '14U']
-const playersLeagueLocations = ['Spanish Fork', 'Salem', 'Payson', 'Orem', 'Vineyard', 'Lehi', 'Draper']
+const VAGARO_BOOK_URL = 'https://www.vagaro.com'
+
+const bookSessionPackages = [
+  {sessionsPerWeek: '1 Session/week', name: 'Flex Starter'},
+  {sessionsPerWeek: '2 Sessions/week', name: 'Flex Builder'},
+  {sessionsPerWeek: '3 Sessions/week', name: 'Flex Elite'},
+  {sessionsPerWeek: '5 Sessions/week', name: 'Flex Max'},
+] as const
+
+const playersLeagueDivisions = [7, 8, 9, 10, 11, 12, 13, 14] as const
 
 const pillars = [
   {
@@ -116,43 +123,59 @@ export function HomePage() {
 
       <section className={styles.playersLeague} id="players-league">
         <div className={styles.wrap}>
-          <div className={styles.playersLeagueHeader}>
-            <p className={styles.sectionKickerLight}>New this season</p>
-            <h2 className={styles.playersLeagueTitle}>The Players League</h2>
-            <p className={styles.playersLeagueLead}>
-              The most competitive youth baseball league in Utah is here — and spots are filling fast. The Players
-              League runs a full high school-format season complete with standings, rivalries, and a playoff bracket
-              that crowns one champion per division. This isn't rec ball. This is where the best gold-level programs
-              in the valley come to prove it. If your team has what it takes, claim your spot before someone else
-              does.
-            </p>
-            <p className={styles.playersLeagueUrgency}>Limited spots per division - registration windows close fast.</p>
+          <p className={styles.sectionKickerLight}>The Players League</p>
+          <h2 className={styles.sectionTitleLight}>League play for 7U through 14U</h2>
+          <p className={styles.playersLeagueLead}>
+            Register your team by division. We will confirm your spot, scheduling, and next steps after you submit.
+            Spanish Fork, Utah — at The Fieldhouse.
+          </p>
+          <div className={styles.divisionGrid}>
+            {playersLeagueDivisions.map((age) => {
+              const label = `${age}U`
+              return (
+                <article key={label} className={styles.divisionCard}>
+                  <h3 className={styles.divisionTitle}>{label}</h3>
+                  <p className={styles.divisionText}>Open registration for the {label} age group.</p>
+                  <Link
+                    to={`/register/${age}u`}
+                    className={`${btnStyles.btn} ${btnStyles.primary}`}
+                  >
+                    Register Now
+                  </Link>
+                </article>
+              )
+            })}
           </div>
+        </div>
+      </section>
 
-          <div className={styles.divisionsGrid}>
-            {playersLeagueDivisions.map((division) => (
-              <article key={division} className={styles.divisionCard}>
-                <h3>{division}</h3>
+      <section className={styles.bookSessions} id="book-sessions">
+        <div className={styles.wrap}>
+          <p className={styles.sectionKickerLight}>Book Sessions</p>
+          <h2 className={styles.sectionTitleLight}>Train on Your Schedule</h2>
+          <p className={styles.bookSessionsSubhead}>No locked-in schedules. Pick the days that work for you, week by week.</p>
+          <p className={styles.bookSessionsLead}>
+            Choose a session package and book your weekly training slots directly. Each session is capped at 12 athletes
+            — when a slot fills up, it&apos;s gone. Packages range from 1 to 5 sessions per week. Parents log in weekly
+            to select their days and times.
+          </p>
+          <div className={styles.packageGrid}>
+            {bookSessionPackages.map((pkg) => (
+              <article key={pkg.name} className={styles.packageCard}>
+                <p className={styles.packageFrequency}>{pkg.sessionsPerWeek}</p>
+                <h3 className={styles.packageName}>{pkg.name}</h3>
                 <a
-                  href={PLAYERS_LEAGUE_REGISTER_URL}
-                  className={`${btnStyles.btn} ${btnStyles.primary}`}
+                  href={VAGARO_BOOK_URL}
                   target="_blank"
                   rel="noreferrer"
+                  className={`${btnStyles.btn} ${btnStyles.primary}`}
                 >
-                  Register Now
+                  Book Now
                 </a>
               </article>
             ))}
           </div>
-
-          <div className={styles.locationsBlock}>
-            <p className={styles.sectionKickerLight}>Playing locations</p>
-            <ul className={styles.locationsList}>
-              {playersLeagueLocations.map((city) => (
-                <li key={city}>{city}</li>
-              ))}
-            </ul>
-          </div>
+          <p className={styles.bookSessionsUrgency}>Spots fill fast — book your week before they&apos;re gone.</p>
         </div>
       </section>
 

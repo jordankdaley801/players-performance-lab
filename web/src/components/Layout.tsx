@@ -4,17 +4,12 @@ import {useCart} from '@/context/CartContext'
 import {useMember} from '@/context/MemberContext'
 import styles from './Layout.module.css'
 
-type NavItem = {
-  to: string
-  label: string
-  hashLink?: boolean
-}
-
-const nav: NavItem[] = [
+const nav: Array<{to: string; label: string; hashLink?: boolean}> = [
   {to: '/', label: 'Home'},
   {to: '/performance-lab', label: 'Performance Lab'},
-  {to: '/fieldhouse', label: 'The Fieldhouse'},
   {to: '/#players-league', label: 'The Players League', hashLink: true},
+  {to: '/#book-sessions', label: 'Book Sessions', hashLink: true},
+  {to: '/fieldhouse', label: 'The Fieldhouse'},
   {to: '/members', label: 'Members'},
   {to: '/shop', label: 'Shop'},
 ]
@@ -55,7 +50,7 @@ export function Layout({children}: {children: ReactNode}) {
                 >
                   {label}
                 </NavLink>
-              ),
+              )
             )}
           </nav>
           <div className={styles.headerActions}>

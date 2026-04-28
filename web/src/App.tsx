@@ -6,6 +6,7 @@ import {MembersPage} from '@/pages/MembersPage'
 import {FieldhousePage} from '@/pages/FieldhousePage'
 import {ShopPage} from '@/pages/ShopPage'
 import {CartPage} from '@/pages/CartPage'
+import {RegisterDivisionPage} from '@/pages/RegisterDivisionPage'
 
 export default function App() {
   return (
@@ -17,6 +18,7 @@ export default function App() {
         <Route path="/fieldhouse" element={<FieldhousePage />} />
         <Route path="/shop" element={<ShopPage />} />
         <Route path="/cart" element={<CartPage />} />
+        <Route path="/register/:division" element={<RegisterDivisionPage />} />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
     </Layout>
