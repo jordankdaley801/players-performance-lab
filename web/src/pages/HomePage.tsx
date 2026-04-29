@@ -1,17 +1,24 @@
 import {Link} from 'react-router-dom'
 import heroImg from '../../../PPL+KinetiQ.jpg'
 import btnStyles from '@/components/Button.module.css'
+import {VAGARO_BOOK_URL} from '@/data/performanceLabPackages'
 import styles from './HomePage.module.css'
 
 /** Served from web/public/hero.mp4 */
 const HERO_VIDEO_SRC = '/hero.mp4'
 const PERFORMANCE_LAB_SIGNUP_URL = 'https://playersfieldhouse.ezfacility.com/package'
 
-const pillars = [
+const pillars: Array<{
+  title: string
+  body: string
+  cta: string
+  to?: string
+  externalHref?: string
+}> = [
   {
     title: 'Team memberships',
     body: 'Seven teams train here with a simple $85/month membership — roughly 70 athletes calling this home.',
-    to: '/members',
+    externalHref: VAGARO_BOOK_URL,
     cta: 'Member hub',
   },
   {
@@ -112,9 +119,14 @@ export function HomePage() {
               >
                 Start with Performance Lab
               </a>
-              <Link to="/members" className={`${btnStyles.btn} ${btnStyles.ghost}`}>
+              <a
+                href={VAGARO_BOOK_URL}
+                target="_blank"
+                rel="noreferrer"
+                className={`${btnStyles.btn} ${btnStyles.ghost}`}
+              >
                 Member Hub
-              </Link>
+              </a>
             </div>
           </div>
         </div>
@@ -179,9 +191,15 @@ export function HomePage() {
               <article key={p.title} className={styles.pillar}>
                 <h3>{p.title}</h3>
                 <p>{p.body}</p>
-                <Link to={p.to} className={styles.pillarLink}>
-                  {p.cta} →
-                </Link>
+                {p.externalHref ? (
+                  <a href={p.externalHref} target="_blank" rel="noreferrer" className={styles.pillarLink}>
+                    {p.cta} →
+                  </a>
+                ) : (
+                  <Link to={p.to!} className={styles.pillarLink}>
+                    {p.cta} →
+                  </Link>
+                )}
               </article>
             ))}
           </div>

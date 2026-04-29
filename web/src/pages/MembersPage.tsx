@@ -1,8 +1,8 @@
 import btnStyles from '@/components/Button.module.css'
+import {VAGARO_BOOK_URL} from '@/data/performanceLabPackages'
 import styles from './MembersPage.module.css'
 
 const EZ_MEMBERSHIP = 'https://playersfieldhouse.ezfacility.com/Membership'
-const EZ_PORTAL = 'https://playersfieldhouse.ezfacility.com'
 
 const cageRules = [
   'One cage per account per session — you cannot hold multiple cages at the same time.',
@@ -55,7 +55,7 @@ export function MembersPage() {
             ))}
           </ul>
           <a
-            href={EZ_PORTAL}
+            href={VAGARO_BOOK_URL}
             target="_blank"
             rel="noreferrer"
             className={`${btnStyles.btn} ${btnStyles.primary} ${styles.cta}`}

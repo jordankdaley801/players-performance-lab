@@ -6,4 +6,5 @@ export const PERFORMANCE_LAB_PACKAGES = [
   {name: 'Flex Max', frequency: '5× / week', priceRegular: 300, priceMember: 250},
 ] as const
 
-export const VAGARO_BOOK_URL = 'https://www.vagaro.com'
+/** Live booking (Performance Lab packages, shared CTAs). */
+export const VAGARO_BOOK_URL = 'https://www.vagaro.com/playersfieldhouse'
