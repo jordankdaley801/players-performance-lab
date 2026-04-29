@@ -46,7 +46,7 @@ export function RegisterDivisionPage() {
   }
 
   if (!isValid) {
-    return <Navigate to="/" replace />
+    return <Navigate to="/players-league" replace />
   }
 
   return (
@@ -142,7 +142,7 @@ export function RegisterDivisionPage() {
           </div>
         </form>
 
-        <Link to="/#players-league" className={styles.backLink}>
+        <Link to="/players-league" className={styles.backLink}>
           ← Back to The Players League
         </Link>
       </div>

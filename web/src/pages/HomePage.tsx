@@ -6,16 +6,6 @@ import styles from './HomePage.module.css'
 /** Served from web/public/hero.mp4 */
 const HERO_VIDEO_SRC = '/hero.mp4'
 const PERFORMANCE_LAB_SIGNUP_URL = 'https://playersfieldhouse.ezfacility.com/package'
-const VAGARO_BOOK_URL = 'https://www.vagaro.com'
-
-const bookSessionPackages = [
-  {sessionsPerWeek: '2 Sessions/week', name: 'Flex Builder'},
-  {sessionsPerWeek: '3 Sessions/week', name: 'Flex Elite'},
-  {sessionsPerWeek: '4 Sessions/week', name: 'Flex Pro'},
-  {sessionsPerWeek: '5 Sessions/week', name: 'Flex Max'},
-] as const
-
-const playersLeagueDivisions = [7, 8, 9, 10, 11, 12, 13, 14] as const
 
 const pillars = [
   {
@@ -55,6 +45,33 @@ const timeline = [
     copy: 'If it is not delivering value, stop anytime. If it is, you will see it in your numbers every 6–8 weeks.',
   },
 ]
+
+const hubPreviews = [
+  {
+    title: 'Member Hub',
+    description: 'Membership details, cage rules, and links to book open cages through the member portal.',
+    to: '/members',
+    cta: 'Go to Member Hub',
+  },
+  {
+    title: 'Performance Lab',
+    description: 'Small-group strength and agility with KinetiQ — flexible weekly packages and member savings.',
+    to: '/performance-lab',
+    cta: 'View Performance Lab',
+  },
+  {
+    title: 'Players League',
+    description: 'League play for 7U through 14U at The Fieldhouse — register your team by age division.',
+    to: '/players-league',
+    cta: 'League registration',
+  },
+  {
+    title: 'Shop',
+    description: 'Fieldhouse apparel and gear — join the list to know when the storefront goes live.',
+    to: '/shop',
+    cta: 'Visit the shop',
+  },
+] as const
 
 export function HomePage() {
   return (
@@ -96,86 +113,56 @@ export function HomePage() {
                 Start with Performance Lab
               </a>
               <Link to="/members" className={`${btnStyles.btn} ${btnStyles.ghost}`}>
-                Member login & cages
+                Member Hub
               </Link>
             </div>
           </div>
-          <div className={styles.heroCard}>
-            <div
-              className={styles.heroCardImage}
-              style={{backgroundImage: `url(${heroImg})`}}
-              role="img"
-              aria-label="Players Performance Lab with KinetiQ"
-            />
-            <div className={styles.heroCardBody}>
-              <p className={styles.heroCardKicker}>Featured partnership</p>
-              <p className={styles.heroCardTitle}>Player Performance Lab with KinetiQ</p>
-              <p className={styles.heroCardText}>
-                Public registration · $150–$200/mo · 2–3 small-group sessions per week · Parents welcome.
+        </div>
+      </section>
+
+      <section className={styles.perfSpotlight} aria-labelledby="perf-spotlight-heading">
+        <div className={styles.wrap}>
+          <div className={styles.perfSpotlightGrid}>
+            <div className={styles.perfSpotlightMedia}>
+              <img src={heroImg} alt="Players Performance Lab with KinetiQ" className={styles.perfSpotlightImg} />
+            </div>
+            <div className={styles.perfSpotlightBody}>
+              <p className={styles.spotEyebrow}>New to Players Fieldhouse</p>
+              <p className={styles.spotKicker}>Featured partnership</p>
+              <h2 id="perf-spotlight-heading" className={styles.spotTitle}>
+                Player Performance Lab with KinetiQ
+              </h2>
+              <p className={styles.spotDetail}>
+                Public registration now open — flexible schedules and packages designed to meet your athlete&apos;s
+                needs.
               </p>
-              <Link to="/performance-lab" className={styles.textLink}>
-                See schedule & pricing →
-              </Link>
+              <p className={styles.spotMeta}>Public registration · $150–$200/mo</p>
+              <p className={styles.spotUrgent} role="status">
+                Limited Availability
+              </p>
+              <div className={styles.spotCtaRow}>
+                <Link to="/performance-lab" className={styles.spotLink}>
+                  See schedule & pricing →
+                </Link>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
-      <section className={styles.playersLeague} id="players-league">
+      <section className={styles.sectionDark}>
         <div className={styles.wrap}>
-          <p className={styles.sectionKickerLight}>The Players League</p>
-          <h2 className={styles.sectionTitleLight}>League play for 7U through 14U</h2>
-          <p className={styles.playersLeagueLead}>
-            Register your team by division. We will confirm your spot, scheduling, and next steps after you submit.
-            Spanish Fork, Utah — at The Fieldhouse.
-          </p>
-          <div className={styles.divisionGrid}>
-            {playersLeagueDivisions.map((age) => {
-              const label = `${age}U`
-              return (
-                <article key={label} className={styles.divisionCard}>
-                  <h3 className={styles.divisionTitle}>{label}</h3>
-                  <p className={styles.divisionText}>Open registration for the {label} age group.</p>
-                  <Link
-                    to={`/register/${age}u`}
-                    className={`${btnStyles.btn} ${btnStyles.primary}`}
-                  >
-                    Register Now
-                  </Link>
-                </article>
-              )
-            })}
-          </div>
-        </div>
-      </section>
-
-      <section className={styles.bookSessions} id="book-sessions">
-        <div className={styles.wrap}>
-          <p className={styles.sectionKickerLight}>Book Sessions</p>
-          <h2 className={styles.sectionTitleLight}>Train on Your Schedule</h2>
-          <p className={styles.bookSessionsSubhead}>No locked-in schedules. Pick the days that work for you, week by week.</p>
-          <p className={styles.bookSessionsLead}>
-            Choose a session package and book your weekly training slots directly. Each session is capped at 12 athletes
-            — when a slot fills up, it&apos;s gone. Packages range from 2 to 5 sessions per week. Parents log in weekly
-            to select their days and times.
-          </p>
-          <div className={styles.packageGrid}>
-            {bookSessionPackages.map((pkg) => (
-              <article key={pkg.name} className={styles.packageCard}>
-                <p className={styles.packageFrequency}>{pkg.sessionsPerWeek}</p>
-                <h3 className={styles.packageName}>{pkg.name}</h3>
-                <a
-                  href={VAGARO_BOOK_URL}
-                  target="_blank"
-                  rel="noreferrer"
-                  className={`${btnStyles.btn} ${btnStyles.primary}`}
-                >
-                  Book Now
-                </a>
+          <p className={styles.sectionKickerLight}>Our journey</p>
+          <h2 className={styles.sectionTitleLight}>Built for athletes who want the full picture</h2>
+          <div className={styles.timeline}>
+            {timeline.map((item) => (
+              <article key={item.title} className={styles.timelineItem}>
+                <span className={styles.timelineYear}>{item.year}</span>
+                <h3>{item.title}</h3>
+                <p>{item.copy}</p>
               </article>
             ))}
           </div>
-          <p className={styles.bookSessionsUrgency}>Spots fill fast — book your week before they&apos;re gone.</p>
         </div>
       </section>
 
@@ -201,30 +188,22 @@ export function HomePage() {
         </div>
       </section>
 
-      <section className={styles.sectionDark}>
+      <section className={styles.previewHub} aria-labelledby="explore-heading">
         <div className={styles.wrap}>
-          <p className={styles.sectionKickerLight}>Our journey</p>
-          <h2 className={styles.sectionTitleLight}>Built for athletes who want the full picture</h2>
-          <div className={styles.timeline}>
-            {timeline.map((item) => (
-              <article key={item.title} className={styles.timelineItem}>
-                <span className={styles.timelineYear}>{item.year}</span>
-                <h3>{item.title}</h3>
-                <p>{item.copy}</p>
+          <h2 id="explore-heading" className={styles.previewHubTitle}>
+            Explore the Fieldhouse
+          </h2>
+          <p className={styles.previewHubLead}>Jump to the area that fits what you need right now.</p>
+          <div className={styles.previewGrid}>
+            {hubPreviews.map((card) => (
+              <article key={card.title} className={styles.previewCard}>
+                <h3 className={styles.previewCardTitle}>{card.title}</h3>
+                <p className={styles.previewCardText}>{card.description}</p>
+                <Link to={card.to} className={`${btnStyles.btn} ${btnStyles.primary} ${styles.previewCardCta}`}>
+                  {card.cta}
+                </Link>
               </article>
             ))}
-          </div>
-          <div className={styles.shopTeaser}>
-            <div>
-              <p className={styles.sectionKickerLight}>Pro shop</p>
-              <h2 className={styles.sectionTitleLight}>Gear up like you mean it</h2>
-              <p className={styles.mutedLight}>
-                Apparel, training tools, and accessories curated for cage work and velocity development.
-              </p>
-            </div>
-            <Link to="/shop" className={`${btnStyles.btn} ${btnStyles.primary}`}>
-              Shop the collection
-            </Link>
           </div>
         </div>
       </section>

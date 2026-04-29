@@ -1,13 +1,19 @@
 :root {
-  /* Used by home hero to sit flush under sticky header while video fills the viewport */
-  --layout-header-h: 5.25rem;
-  --navy: #0a1628;
+  /* Used by home hero + scroll offset; match sticky header visual height */
+  --layout-header-h: 5.75rem;
+  /* Brand palette — navy, red, white, light gray only */
+  --brand-navy: #0a1628;
+  --brand-red: #8b0000;
+  --brand-red-hover: #6d0000;
+  --brand-white: #ffffff;
+  /* Semantic tokens */
+  --navy: var(--brand-navy);
   --navy-mid: #111f36;
   --navy-soft: #1a2d4a;
-  --red: #e31837;
-  --red-dark: #b5122c;
-  --cream: #f4f1ea;
-  --white: #ffffff;
+  --red: var(--brand-red);
+  --red-dark: var(--brand-red-hover);
+  --cream: #f5f5f5;
+  --white: var(--brand-white);
   --muted: rgba(255, 255, 255, 0.72);
   --muted-dark: rgba(10, 22, 40, 0.65);
   --border: rgba(255, 255, 255, 0.12);
@@ -27,11 +33,12 @@
 
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: var(--layout-header-h);
 }
 
 @media (max-width: 900px) {
   :root {
-    --layout-header-h: 8.75rem;
+    --layout-header-h: 5.25rem;
   }
 }
 

@@ -1,64 +1,64 @@
 import {Link, NavLink} from 'react-router-dom'
-import type {ReactNode} from 'react'
-import {useCart} from '@/context/CartContext'
-import {useMember} from '@/context/MemberContext'
+import {type ReactNode, useCallback, useState} from 'react'
 import styles from './Layout.module.css'
 
-const nav: Array<{to: string; label: string; hashLink?: boolean}> = [
+const navItems = [
   {to: '/', label: 'Home'},
+  {to: '/members', label: 'Member Hub'},
   {to: '/performance-lab', label: 'Performance Lab'},
-  {to: '/#players-league', label: 'The Players League', hashLink: true},
-  {to: '/#book-sessions', label: 'Book Sessions', hashLink: true},
-  {to: '/fieldhouse', label: 'The Fieldhouse'},
-  {to: '/members', label: 'Members'},
+  {to: '/players-league', label: 'Players League'},
   {to: '/shop', label: 'Shop'},
-]
+] as const
 
 const socialLinks = {
-  facebook: 'https://www.instagram.com/players.performance.lab/',
+  facebook: 'https://www.facebook.com/',
   instagram: 'https://www.instagram.com/playersfieldhouse/',
 }
 
 export function Layout({children}: {children: ReactNode}) {
-  const {count} = useCart()
-  const {member} = useMember()
+  const [menuOpen, setMenuOpen] = useState(false)
+
+  const closeMenu = useCallback(() => setMenuOpen(false), [])
+
   return (
     <div className={styles.shell}>
       <header className={styles.header}>
         <div className={styles.headerInner}>
-          <Link to="/" className={styles.brand}>
+          <Link to="/" className={styles.brand} onClick={closeMenu}>
             <img src="/logo.png" alt="" className={styles.brandMark} width={44} height={44} decoding="async" />
             <span className={styles.brandText}>
               <span className={styles.brandTitle}>Players Fieldhouse</span>
               <span className={styles.brandSub}>The Fieldhouse · Spanish Fork, UT</span>
             </span>
           </Link>
-          <nav className={styles.nav} aria-label="Primary">
-            {nav.map(({to, label, hashLink}) =>
-              hashLink ? (
-                <a key={to} href={to} className={styles.navLink}>
-                  {label}
-                </a>
-              ) : (
-                <NavLink
-                  key={to}
-                  to={to}
-                  className={({isActive}) =>
-                    `${styles.navLink} ${isActive ? styles.navLinkActive : ''}`.trim()
-                  }
-                  end={to === '/'}
-                >
-                  {label}
-                </NavLink>
-              )
-            )}
+
+          <nav className={styles.navDesktop} aria-label="Primary">
+            {navItems.map(({to, label}) => (
+              <NavLink
+                key={to}
+                to={to}
+                end={to === '/'}
+                className={({isActive}) => `${styles.navLink} ${isActive ? styles.navLinkActive : ''}`.trim()}
+              >
+                {label}
+              </NavLink>
+            ))}
           </nav>
-          <div className={styles.headerActions}>
-            {member ? (
-              <span className={styles.memberPill} title={member.email}>
-                Hi, {member.name.split(' ')[0]}
-              </span>
-            ) : null}
+
+          <div className={styles.headerTail}>
+            <button
+              type="button"
+              className={styles.menuToggle}
+              aria-expanded={menuOpen}
+              aria-controls="mobile-nav"
+              onClick={() => setMenuOpen((o) => !o)}
+            >
+              <span className="sr-only">{menuOpen ? 'Close menu' : 'Open menu'}</span>
+              <span className={styles.menuBar} data-open={menuOpen} />
+              <span className={styles.menuBar} data-open={menuOpen} />
+              <span className={styles.menuBar} data-open={menuOpen} />
+            </button>
+
             <div className={styles.socialLinks} aria-label="Social media">
               <a
                 href={socialLinks.facebook}
@@ -83,12 +83,29 @@ export function Layout({children}: {children: ReactNode}) {
                 </svg>
               </a>
             </div>
-            <Link to="/cart" className={styles.cartLink}>
-              Cart
-              {count > 0 ? <span className={styles.cartBadge}>{count}</span> : null}
-            </Link>
           </div>
         </div>
+
+        {menuOpen ? (
+          <div className={styles.mobileBackdrop} aria-hidden onClick={closeMenu} />
+        ) : null}
+        <nav
+          id="mobile-nav"
+          className={`${styles.navMobile} ${menuOpen ? styles.navMobileOpen : ''}`}
+          aria-label="Primary mobile"
+        >
+          {navItems.map(({to, label}) => (
+            <NavLink
+              key={to}
+              to={to}
+              end={to === '/'}
+              className={({isActive}) => `${styles.navMobileLink} ${isActive ? styles.navLinkActive : ''}`.trim()}
+              onClick={closeMenu}
+            >
+              {label}
+            </NavLink>
+          ))}
+        </nav>
       </header>
       <main className={styles.main}>{children}</main>
       <footer className={styles.footer}>
@@ -125,8 +142,8 @@ export function Layout({children}: {children: ReactNode}) {
           </div>
         </div>
         <p className={styles.footerLegal}>
-          © {new Date().getFullYear()} Players Performance Lab. Player Performance Lab with KinetiQ is open to the
-          public. Team memberships and cage access are for enrolled facility members.
+          © {new Date().getFullYear()} Players Fieldhouse. Player Performance Lab with KinetiQ is open to the public.
+          Team memberships and cage access are for enrolled facility members.
         </p>
       </footer>
     </div>
